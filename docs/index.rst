@@ -16,8 +16,18 @@ DTU Python support
 -- Polytechnical Foundation courses
 -----------------------------------
 
+.. card:: Python Installation Support closed!
+   :class-card: sd-color-info
 
-.. card:: New student at DTU 2023? Welcome!
+   The Python Installation Support is closed until the spring semester.
+
+   Our `Discord <ps-discord-invite_>`_ channel will remain open for students
+   to interact with each other.
+
+   See you in the spring.
+
+
+.. card:: New student at DTU {{current_year}}? Welcome!
    :class-card: sd-color-primary
 
    .. button-link:: https://02002.compute.dtu.dk/installation/index.html
@@ -84,11 +94,11 @@ Office hours
    This page will be updated continuously.
 
 Mail -- :mail:`pythonsupport@dtu.dk`  |  {{online_days}} in the evening
-   Outside of office hours we can be contacted through emails. We strive to return
-   answers as soon as possible.
+   Outside of office hours (during the semester) we can be contacted through emails.
+   We strive to return answers as soon as possible.
 
 Discord -- `channel <ps-discord-general_>`_ and `invite link <ps-discord-invite_>`_  |  {{online_days}} in the evening
-   Our support team will also be present on the Discord chat service.
+   Our support team will also be present on the Discord chat service during the semester.
 
    Using the Discord channel requires signing up to Discord's terms, DTU
    has no control over Discord and how they use your data. If you feel uncomfortable
@@ -116,9 +126,9 @@ Discord -- `channel <ps-discord-general_>`_ and `invite link <ps-discord-invite_
      Chemistry
    - :course-base:`27020`
      Bioengineering
-   - :course-base:`42611`
+   - :course-base:`42620`, :course-base:`42622`
      Science, Technology and Society
-   - :course-base:`42500`
+   - :course-base:`42500`, :course-base:`42501`, :course-base:`42504`
      Innovation in Engineering
    - :course-base:`12100`
      Quantitative Sustainability
@@ -135,23 +145,28 @@ Discord -- `channel <ps-discord-general_>`_ and `invite link <ps-discord-invite_
 
    quickstart/index.rst
    courses/index.rst
-
-   python/install.rst
-
+   python/index.rst
 
 .. toctree::
    :maxdepth: 2
    :hidden:
    :caption: Advanced usage
    
-   python/environments.rst
-
    python/pip.rst
    python/conda.rst
-
    os/index.rst
    ides/index.rst
-
+   python/environments.rst
    faqs/index.rst
-
+   python/uninstall.rst
    src/about.rst
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Supported functionalities
+
+   {{python_version_min}} -- {{python_version_max}} <python/supported.rst>
+   Conda <python/supported.rst>
+   Python.org <python/supported.rst>
+   Virtual Environments <python/supported.rst>

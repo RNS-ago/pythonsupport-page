@@ -16,7 +16,7 @@ _cwd = Path().resolve()
 
 # add the exts folder
 sys.path.insert(1, str(_cwd))
-from ps_modules.dictformatter import DictFormatter
+from ps_modules.pageredirects import *
 from ps_modules.create_timetabs import create_time_table
 
 if sys.version_info >= (3, 11):
@@ -42,15 +42,16 @@ def version2tuple(vers):
 
     raise NotImplementedError()
 
+year = datetime.date.today().year
+
 project = 'DTU Python support'
 html_title = "DTU Python support"
-copyright = '2023, DTU Python support'
+copyright = f'{year}, DTU Python support'
 author = 'DTU Python support developers'
-recommended_python = "3.11"
 
 # when we have a guideline:
 _pref_symbol = ":fas:`ranking-star`"
-_pref_symbol = ""
+#_pref_symbol = ""
 
 
 # -- General configuration ---------------------------------------------------
@@ -64,6 +65,8 @@ extensions = [
     'sphinx.ext.extlinks',
     # allows to view code directly in the homepage
     'sphinx.ext.viewcode',
+    # toggle-button on info/warning/...
+    'sphinx_togglebutton',
     # create tabs and grouped tabs
     'sphinx_inline_tabs',
     # allow emoji's in the documentation
@@ -126,13 +129,12 @@ _pythonsupport = _conf_toml["pythonsupport"]
 
 url = _pythonsupport["homepage"]
 
-_coursepages = DictFormatter()
+_coursepages = HomepageFormatter()
 # Add all courses here
 # These will be used to format the homepages
 # I.e. this class can be used in extlinks
 for course, info in _conf_toml["course"].items():
     _coursepages.add(course, info["home"])
-
 
 extlinks = {
     # easy mails
@@ -144,7 +146,10 @@ extlinks = {
     "course": (":doc:`/courses/%s/index`", "%s"),
     # direct links to DTU's course database for the course
     # When courses changes numbers etc. some might
-    "course-base": (f"{_conf_toml['dtu']['course-base']}/course/{_year[0]}-{_year[1]}/%s", "%s"),
+    "course-base": (
+        Coursebase(_conf_toml["dtu"]["course-base"] + "/course"),
+        CourseStrip()
+    ),
     # direct links to DTU's course database for the course
     # When courses changes numbers etc. some might
     "course-home": (_coursepages, "%s"),
@@ -169,6 +174,7 @@ rst_epilog = f"""\
 .. _python-org-down-win: https://www.python.org/downloads/windows
 .. _python-org-down-mac: https://www.python.org/downloads/macos
 .. _python-org-down-linux: https://www.python.org/downloads/linux
+.. _python-org-rec: {_pythonsupport['python-org-recommended']}
 .. _pypi-org: https://pypi.org
 .. _pip-org: https://pip.pypa.io/en/stable
 
@@ -197,8 +203,7 @@ html_theme = 'sphinx_book_theme'
 html_static_path = ['_static']
 
 # this move will work regardless of hover...
-_fa_move = "fa-spin-hover"
-_fa_move = ""
+_fa_move = "shake-hover"
 
 _icon_links = [
     {
@@ -216,7 +221,7 @@ _icon_links = [
     {
         "name": "DTU help | External pages",
         "url": "#;",
-        "icon": f"fa-solid fa-ellipsis-vertical",
+        "icon": "fa-solid fa-ellipsis-vertical",
         "type": "fontawesome",
     },
     {
@@ -228,7 +233,7 @@ _icon_links = [
     {
         "name": "PyPi package installation repository",
         "url": "https://pypi.org/",
-        "icon": f"_static/logo-small.2a411bc6.svg",
+        "icon": "_static/logo-small.2a411bc6.svg",
         "type": "local",
     },
     {
@@ -279,6 +284,7 @@ html_css_files = [
     ("css/custom_styles.css",{'priority':999}),
     "css/colors.css",
 ]
+
 
 import pydata_sphinx_theme
 if version2tuple(pydata_sphinx_theme.__version__) >= (0, 14):
@@ -362,7 +368,7 @@ course_switcher()
 create_time_table(_conf_toml["semester"])
 
 # Now exclude the years that are not going to be used
-year, week = map(int, datetime.date.today().strftime("%G %V").split())
+week = int(datetime.date.today().strftime("%V"))
 for y in range(2023, year + 1):
     if y < year:
         week_end = 54
@@ -412,15 +418,22 @@ html_context = {
     "github_repo": "pythonsupport-page",
     "ps_repository": _pythonsupport["repository"],
     "github_version": "main",
-    "python_version": recommended_python,
     "path_to_docs": "docs/",
     "pref_symbol": _pref_symbol,
+    "python_org_rec": _pythonsupport["python-org-recommended"],
+    "python_version_min": _pythonsupport["python-version"]["min"],
+    "python_version_max": _pythonsupport["python-version"]["max"],
+    "python_version_recommended": _pythonsupport["python-version"]["recommended"],
+    "python_version": _pythonsupport["python-version"]["recommended"],
 
     # Installation methods
     "pip": f"pip {_pref_symbol}",
     "conda": "conda",
     "poetry": "poetry",
     "pyenv": "pyenv",
+
+    # dates
+    "current_year": f"{year}",
 
     # Virtual environment methods
     "venv": f"venv {_pref_symbol}",
@@ -431,13 +444,14 @@ html_context = {
     "windows": "Windows",
     "macos": "MacOS",
     "linux": "Linux",
+    "vscode": "VS Code",
+    "spyder": "Spyder",
 
     # Operating shells
     "win_powershell": f"Windows | Powershell {_pref_symbol}",
     "win_batch": "Windows | Batch",
     "mac_bash": "MacOS | Bash",
     "linux_bash": "Linux | Bash",
-    "mac_linux_bash": "MacOS | Linux | Bash",
 
     # Cheatsheet information
     "cheatsheet_icon": ":fas:`toolbox`",
@@ -487,10 +501,11 @@ def rstjinja_include(app, relative_path, parent_docname, content):
     content[0] = rstjinja(app, content[0])
 
 def setup(app):
+
+
     app.connect("source-read", rstjinja_source)
     try:
         # include-read was added in 7.2.5 of Sphinx
         app.connect("include-read", rstjinja_include)
     except BaseException as e:
-        # we don't do anything
-        pass
+        print("cannot do jinja-replacements on included files")

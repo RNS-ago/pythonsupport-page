@@ -1,8 +1,8 @@
 
 .. _course-index:
 
-Courses
-=======
+DTU Courses
+===========
 
 .. note::
 
@@ -11,12 +11,21 @@ Courses
    The documentation here is considered complimentary to the course
    material, unless otherwise stated by the teacher.
 
+.. tip::
+
+   If an error is encountered during the installation process, it is *vital*
+   to report this to :email:`pythonsupport@dtu.dk` so we can correct/add
+   content for work-arounds.
+
+   Thanks!
+
 
 .. toctree::
    :caption: Course guides
    :maxdepth: 1
 
    01001/index.rst
+   01002/index.rst
    02002/index.rst
    02461/index.rst
 

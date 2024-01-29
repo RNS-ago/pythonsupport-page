@@ -1,7 +1,7 @@
-.. _terminalExercise:
+.. _os-terminal:
 
 What's a Terminal?
-============
+==================
 
 
 ``The Terminal`` may sound complicated, but it is a fundamental part of every computer and a key element used in development for handling most tasks in your coding environment.
@@ -12,199 +12,240 @@ Learning how to use the Terminal allows you to give the computer the exact comma
 Commands
 --------
 
+Commands executed on the terminal comprises of the application name ``<command>``, followed by arguments to the command ``<command> <arguments>``. For instance, a command creating a new directory would be expected to have
+a single mandatory argument which equals the name of the new folder. Other commands may have several mandatory arguments.
+
+.. admonition:: Optional arguments and spaces in names
+   :class: dropdown
+   
+   Most commands have *optional* arguments prefixed with ``--`` (Mac/Unix, sometimes Windows) or ``/`` (Windows).
+
+   Spaces in file/folder names has to be escaped by encapsulating in quotation marks.
+   For instance ``cd "New Folder"``, or ``rm "my file"``.
+
+
 pwd (Print Working Directory)
 +++++++++++++++++++++++++++++++
 
-The `pwd` command displays the current working directory. It is particularly helpful when you need to know your current location within the file system.
+The ``pwd`` command displays the current working directory. It is particularly helpful when you need to know your current location within the file system.
 
-.. tab::  Windows (Powershell)
+.. tab-set::
 
-   .. code-block:: bash
+   .. tab-item:: {{win_powershell}}
+      :sync: powershell
 
-      pwd
+      .. code-block:: bash
 
-.. tab::  Windows (Batch)
+         pwd
 
-   .. code-block:: bash
+   .. tab-item:: {{win_batch}}
+      :sync: batch
 
-      cd
+      .. code-block:: bash
 
-.. tab::  MacOS|Bash
+         cd
 
-   .. code-block:: bash
+   .. tab-item:: {{mac_bash}}
+      :sync: mac
 
-      pwd
+      .. code-block:: bash
 
-.. tab::  Linux|Bash
+         pwd
 
-   .. code-block:: bash
+   .. tab-item:: {{linux_bash}}
+      :sync: bash
 
-      pwd
+      .. code-block:: bash
+
+         pwd
+
 
 cd (Change Directory)
 ++++++++++++++++++++++
 
-The `cd` command is used to change the current working directory. It enables you to navigate through various folders and explore different parts of the file system.
+The ``cd`` command is used to change the current working directory. It enables you to navigate through various folders and explore different parts of the file system.
 
-.. tab::  Windows (Powershell)
+.. tab-set::
 
-   .. code-block:: bash
+   .. tab-item:: {{win_powershell}}
+      :sync: powershell
 
-      cd NewFolder
+      .. code-block:: bash
 
-.. tab::  Windows (Batch)
+         cd NewFolder
 
-   .. code-block:: bash
+   .. tab-item:: {{win_batch}}
+      :sync: batch
 
-      cd NewFolder
+      .. code-block:: bash
 
-.. tab::  MacOS|Bash
+         cd NewFolder
 
-   .. code-block:: bash
+   .. tab-item:: {{mac_bash}}
+      :sync: mac
 
-      cd NewFolder
+      .. code-block:: bash
 
-.. tab::  Linux|Bash
+         cd NewFolder
 
-   .. code-block:: bash
+   .. tab-item:: {{linux_bash}}
+      :sync: bash
 
-      cd NewFolder
+      .. code-block:: bash
+
+         cd NewFolder
+
 
 ls (List)
 +++++++++
 
-The `ls` command is used to list all files and directories in the current working directory. It allows you to view the contents of the folder you are currently in.
+The ``ls`` command is used to list all files and directories in the current working directory. It allows you to view the contents of the folder you are currently in.
 
-.. tab::  Windows (Powershell)
+.. tab-set::
 
-   .. code-block:: bash
+   .. tab-item::  {{win_powershell}}
+      :sync: powershell
 
-      ls
+      .. code-block:: powershell
 
-.. tab::  Windows (Batch)
+         ls
 
-   .. code-block:: bash
+   .. tab-item:: {{win_batch}}
+      :sync: batch
 
-      dir
+      .. code-block:: winbatch
 
-.. tab::  MacOS|Bash
+         dir
 
-   .. code-block:: bash
+   .. tab-item:: {{mac_bash}}
+      :sync: mac
 
-      ls
+      .. code-block:: bash
 
-.. tab::  Linux|Bash
+         ls
 
-   .. code-block:: bash
+   .. tab-item:: {{linux_bash}}
+      :sync: bash
 
-      ls
+      .. code-block:: bash
+
+         ls
+
 
 mkdir (Create Directory)
 +++++++++++++++++++++++++
 
-The `mkdir` command is used to create a new directory. It is particularly helpful when you need to create a new folder for your project.
+The ``mkdir`` command is used to create a new directory. It is particularly helpful when you need to create a new folder for your project.
 
-.. tab::  Windows (Powershell)
+.. tab-set::
 
-   .. code-block:: bash
+   .. tab-item::  {{win_powershell}}
+      :sync: powershell
 
-        mkdir NewFolder
+      .. code-block:: powershell
 
-.. tab::  Windows (Batch)
+           mkdir NewFolder
 
-   .. code-block:: bash
+   .. tab-item:: {{win_batch}}
+      :sync: batch
 
-        mkdir NewFolder
+      .. code-block:: winbatch
 
-.. tab::  MacOS|Bash
+           mkdir NewFolder
 
-   .. code-block:: bash
+   .. tab-item:: {{mac_bash}}
+      :sync: mac
 
-        mkdir NewFolder
+      .. code-block:: bash
 
-.. tab::  Linux|Bash
+           mkdir NewFolder
 
-   .. code-block:: bash
+   .. tab-item:: {{linux_bash}}
+      :sync: bash
 
-        mkdir NewFolder
+      .. code-block:: bash
+
+           mkdir NewFolder
+
 
 rm (Remove)
 +++++++++++
 
-The `rm` or `del` command is used to delete files and `rm -r` or `rmdir /s` to delete directories permanently. It is a powerful command that can help you remove unnecessary files from the file system.
+The ``rm`` or ``del`` command is used to delete files and ``rm -r`` or ``rmdir /s`` to delete directories permanently. It is a powerful command that can help you remove unnecessary files from the file system.
 
-.. tab::  Windows (Powershell)
+.. tab-set::
 
-   .. code-block:: bash
+   .. tab-item::  {{win_powershell}}
+      :sync: powershell
 
-      rm NewFile.txt
+      .. code-block:: powershell
 
-   .. code-block:: bash   
-      
-      rm -r NewFolder
+         rm NewFile.txt
+         rm -r NewFolder
 
-.. tab::  Windows (Batch)
+   .. tab-item:: {{win_batch}}
+      :sync: batch
 
-   .. code-block:: bash
+      .. code-block:: winbatch
 
-      del NewFile.txt
+         del NewFile.txt
+         rmdir /s NewFolder
 
-   .. code-block:: bash   
-      
-      rmdir /s NewFolder
+   .. tab-item:: {{mac_bash}}
+      :sync: mac
 
-.. tab::  MacOS|Bash
+      .. code-block:: bash
 
-   .. code-block:: bash
+         rm NewFile.txt
+         rm -r NewFolder
 
-      rm NewFile.txt
+   .. tab-item:: {{linux_bash}}
+      :sync: bash
 
-   .. code-block:: bash   
-      
-      rm -r NewFolder
+      .. code-block:: bash
 
-.. tab::  Linux|Bash
+         rm NewFile.txt
+         rm -r NewFolder
 
-   .. code-block:: bash
-
-      rm NewFile.txt
-
-   .. code-block:: bash   
-      
-      rm -r NewFolder
 
 pip (Package Installer for Python)
 +++++++++++++++++++++++++++++++++++
 
-The `pip` command is a package installer for Python that simplifies the process of managing and installing various Python
+The ``pip`` command is a package installer for Python that simplifies the process of managing and installing various Python
 
-.. tab::  Windows (Powershell)
+.. tab-set::
 
-   .. code-block:: bash
+   .. tab-item::  {{win_powershell}}
+      :sync: powershell
 
-      pip install <package_name>
+      .. code-block:: powershell
 
-.. tab::  Windows (Batch)
-    
-   .. code-block:: bash
+         pip install <package_name>
 
-      pip install <package_name>
+   .. tab-item:: {{win_batch}}
+      :sync: batch
+       
+      .. code-block:: winbatch
 
-.. tab::  MacOS|Bash
+         pip install <package_name>
 
-    .. code-block:: bash
-    
-        pip3 install <package_name>
+   .. tab-item:: {{mac_bash}}
+      :sync: mac
 
-.. tab::  Linux|Bash
+      .. code-block:: bash
+       
+         pip3 install <package_name>
 
-    .. code-block:: bash
-    
-        pip3 install <package_name>
+   .. tab-item:: {{linux_bash}}
+      :sync: bash
+
+      .. code-block:: bash
+       
+         pip3 install <package_name>
 
 
 How to make using the terminal easier
-++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------
 
 There are a few different tips/tricks to make using the terminal a lot smoother:
 
@@ -212,10 +253,11 @@ There are a few different tips/tricks to make using the terminal a lot smoother:
    * If you have already input a command and need to use it again, pressing the upwards arrow key will go through your old inputs
    * This is especially useful for correcting typos in wrong input
 
-* Using tab key to autocomplete input
-   * The tab key is the one with two sideways arrows (usually placed above caps lock)
-   * This is very efficient in combination with the ``cd`` command 
-   * For example one can navigate to the folder ``MyFolderForCourse01006`` by simply typing ``cd My``, and then pressing tab followed by enter
+* Using :kbd:`Tab` key to autocomplete input
+   * The :kbd:`Tab` key is the one with two sideways arrows (usually placed above caps lock)
+   * This is very efficient in combination commands which expects files/folders as arguments.
+   * For example one can navigate to the folder ``MyFolderForCourse01006`` by simply typing ``cd My``, and then pressing :kbd:`Tab` and :kbd:`Enter`
+     Pressing :kbd:`Tab` multiple times will cycle through all files/folders that starts with ``My``.
 
 * Pasting code into the terminal
    * The terminal is just like any other document, in the sense that you can copy and paste anything

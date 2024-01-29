@@ -19,9 +19,11 @@ VSCode
 PyCharm
 Jupyter
 Lyngby
+IPython
 conda
 pip
 venv
+anaconda
 virtualenv
 miniconda
 mamba
@@ -32,6 +34,19 @@ homebrew
 mkdir
 makefile
 
+# packages
+numpy
+scipy
+matplotlib
+sympy
+pytorch
+tensorflow
+dtumathtools
+
 # proper words:
 explorative
 executables
+miscommunicate
+workspaces
+integrations
+understandability
