@@ -1,4 +1,4 @@
-toml ; python_version < "3.11"
+
 
 # we should be build-able on any version (check minimal version)
 sphinx
