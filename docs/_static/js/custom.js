@@ -85,10 +85,10 @@ function PyS_noRed() {
 
 document.addEventListener("DOMContentLoaded", function () {
   var images = document.getElementsByTagName("img");
+  var childImage;
   var overlay = document.createElement("div");
   overlay.className = "zoom-overlay";
   document.body.appendChild(overlay);
-  var childImage;
 
   for (var i = 0; i < images.length; i++) {
     images[i].addEventListener("click", function () {
